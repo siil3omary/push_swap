@@ -1,0 +1,6 @@
+[submodule "includes/my_libft"]
+	path = includes/my_libft
+	url = git@github.com:siil3omary/libft13.git
+[submodule "includes/my_ft_printf"]
+	path = includes/my_ft_printf
+	url = git@github.com:siil3omary/ft_printf.git
