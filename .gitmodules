@@ -1,8 +1,0 @@
-<<<<<<< HEAD
-[submodule "ft_printf"]
-	path = includes/ft_prinf
-	url = git@github.com:siil3omary/ft_printf.git
-[submodule "libft"]
-    path = includes/libft
-    url =git@github.com:siil3omary/libft13.git
-=======
