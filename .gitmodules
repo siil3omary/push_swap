@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 [submodule "ft_printf"]
 	path = includes/ft_prinf
 	url = git@github.com:siil3omary/ft_printf.git
 [submodule "libft"]
+=======
+[submodule "includes/libft"]
+>>>>>>> 41fb3d4 (done adding libft & ft_printf)
 	path = includes/libft
 	url = git@github.com:siil3omary/libft13.git
+[submodule "includes/ft_printf"]
+	path = includes/ft_printf
+	url = git@github.com:siil3omary/ft_printf.git
