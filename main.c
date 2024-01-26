@@ -1,54 +1,82 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aelomari <aelomari@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/26 11:46:46 by aelomari          #+#    #+#             */
+/*   Updated: 2024/01/26 11:46:47 by aelomari         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "includes/push_swap.h"
 
-int main(int ac, char **av)
+void	ft_error(void)
 {
-    t_list a;
-    t_list b;
-    int true;
-
-    true = 0;
-
-    if (ac == 1 )
-        return (0);
-        else if ((ac == 2 && av[1][0] == '\0'))
-        {
-        ft_printf("Error\n");
-        return (0);
-            
-        }
-        
-              else if(ac == 2 ){
-              av = ft_split(av[1] , ' ');
-              true = 1;
-              }
-              else if (ac > 2)
-              {
-                  int i = 1;
-                  while (i < ac)
-                  {
-                      if (av[i][0] == '\0')
-                      {
-                          ft_printf("Error\n");
-                          return (0);
-                      }
-                      i++;
-                  }
-              }
-
-int i = 0;
-while (av[i] != NULL)
-{
-    ft_printf("%s\n" , av[i]);
-    i++;
+	ft_printf("Error\n");
+	system("leaks push_swap");
+	exit(1);
 }
-if(true == 1)
-free_all(av);
-av = NULL;
 
+int	isduplicate(long num, char **args, int i)
+{
+	i++;
+	while (args[i])
+	{
+		if (ft_atoi(args[i]) == num)
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
+int	isnumber(char *str)
+{
+	int	i;
 
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
-              
-    
-    system("leaks push_swap");
+void	check_arg(int ac, char **av)
+{
+	char	**args;
+	long	tmp;
+	int		i;
+
+	if (ac < 2)
+		exit(1);
+	else if (ac == 2)
+		args = ft_split(av[1], ' ');
+	else
+		args = av;
+	i = 1;
+	while (args[i])
+	{
+		tmp = ft_atoi(args[i]);
+		if (!isnumber(args[i]))
+			ft_error();
+		else if (isduplicate(tmp, args, i))
+			ft_error();
+		else if (tmp > INT_MAX || tmp < INT_MIN)
+			ft_error();
+		i++;
+	}
+	if (ac == 2)
+		free_all(args);
+}
+
+int	main(int ac, char **av)
+{
+	check_arg(ac, av);
+	system("leaks push_swap");
 }

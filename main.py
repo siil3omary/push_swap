@@ -2,8 +2,8 @@ import random
 
 # Set the range and number of unique random numbers
 lower_bound = 0
-upper_bound = 5000
-num_numbers = 5000
+upper_bound = 500
+num_numbers = 500
 
 # Generate a list of unique random numbers
 random_numbers = random.sample(range(lower_bound, upper_bound + 1), num_numbers)
