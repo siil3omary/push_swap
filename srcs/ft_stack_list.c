@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 11:55:15 by aelomari          #+#    #+#             */
-/*   Updated: 2024/01/28 15:54:02 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/01/28 16:23:31 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,22 @@ void	ft_stackclear(t_stack **stack, void (*del)(void *))
 	while (current)
 	{
 		next = current->next;
-		ft_stackdelone(current, del);
+		free(current);
 		current = next;
 	}
 	*stack = NULL;
 }
-void ft_stackdelone(t_stack *stack, void (*del)(void *))
+
+void	ft_stackdelone(t_stack *stack, void (*del)(void *))
 {
-    if (!stack || !del)
-        return;
-    (del)((void *)(intptr_t)stack->data);
-    free(stack);
+	if (!stack || !del)
+		return ;
+	(del)(&stack->data);
+	free(stack);
 }
 t_stack	*ft_stacknew(int data)
 {
-	t_stack	*new;
+	t_stack *new;
 
 	new = (t_stack *)malloc(sizeof(t_stack));
 	if (new == NULL)
