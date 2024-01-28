@@ -1,12 +1,12 @@
 #include "../includes/push_swap.h"
 void	ft_error(void)
 {
-	ft_printf("Error\n");
+	write(2, "Error\n", 6);
 	system("leaks push_swap");
 	exit(1);
 }
 
-int	isduplicate(long num, char **args, int i)
+static int	isduplicate(long num, char **args, int i)
 {
 	i++;
 	while (args[i])
@@ -18,7 +18,7 @@ int	isduplicate(long num, char **args, int i)
 	return (0);
 }
 
-int	isnumber(char *str)
+static int	isnumber(char *str)
 {
 	int	i;
 
@@ -50,9 +50,7 @@ void	check_arg(int ac, char **av)
 	while (args[i])
 	{
 		tmp = ft_atoi(args[i]);
-		if (!isnumber(args[i]))
-			ft_error();
-		else if (isduplicate(tmp, args, i))
+		if (!isnumber(args[i]) || isduplicate(tmp, args, i))
 			ft_error();
 		else if (tmp > INT_MAX || tmp < INT_MIN)
 			ft_error();
