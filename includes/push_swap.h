@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 11:47:37 by aelomari          #+#    #+#             */
-/*   Updated: 2024/01/28 11:10:59 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/01/28 15:51:37 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_stack
 }					t_stack;
 
 // =====================  Prototypes  ===================== //
+t_stack	*ft_stacknew(int data);
+void	ft_stackadd_back(t_stack **lst, t_stack *new);
 void	ft_stackdelone(t_stack *lst, void (*del)(void *));
 void	ft_stackclear(t_stack **lst, void (*del)(void *));
 void	check_arg(int ac, char **av);
