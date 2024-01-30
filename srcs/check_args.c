@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:53:21 by aelomari          #+#    #+#             */
-/*   Updated: 2024/01/28 15:53:22 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/01/28 16:30:03 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	isnumber(char *str)
 	return (1);
 }
 
-void	check_arg(int ac, char **av)
+char	**check_arg(int ac, char **av)
 {
 	char	**args;
 	long	tmp;
@@ -69,6 +69,5 @@ void	check_arg(int ac, char **av)
 			ft_error();
 		i++;
 	}
-	if (ac == 2)
-		free_all(args);
+		return (args);
 }
