@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_stack_list.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelomari <aelomari@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 11:55:15 by aelomari          #+#    #+#             */
-/*   Updated: 2024/01/28 16:23:31 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/01/30 17:41:20 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,10 @@ void	ft_stackdelone(t_stack *stack, void (*del)(void *))
 	(del)(&stack->data);
 	free(stack);
 }
+
 t_stack	*ft_stacknew(int data)
 {
-	t_stack *new;
+	t_stack	*new;
 
 	new = (t_stack *)malloc(sizeof(t_stack));
 	if (new == NULL)

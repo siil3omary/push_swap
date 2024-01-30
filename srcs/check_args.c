@@ -69,5 +69,5 @@ char	**check_arg(int ac, char **av)
 			ft_error();
 		i++;
 	}
-		return (args);
+	return (args);
 }

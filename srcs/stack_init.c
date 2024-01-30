@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aelomari <aelomari@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 16:49:34 by aelomari          #+#    #+#             */
-/*   Updated: 2024/01/28 16:49:35 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/01/30 17:40:09 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@ t_stack	*stack_init(t_stack **stack, char **av)
 	nodes = NULL;
 	head = NULL;
 	i = 1;
-    while(av[i])
-    i++;
-    i--;
-
-	while ( i >  0)
+	while (av[i])
+		i++;
+	i--;
+	while (i > 0)
 	{
 		nodes = ft_stacknew(ft_atoi(av[i]));
 		if (!head)

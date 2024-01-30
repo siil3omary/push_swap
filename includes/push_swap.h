@@ -23,17 +23,17 @@
 // =====================  Structures  ===================== //
 typedef struct s_stack
 {
-    int				data;
-    struct s_stack	*next;
+	int				data;
+	struct s_stack	*next;
 }					t_stack;
 
 // =====================  Prototypes  ===================== //
-t_stack	*stack_init(t_stack **stack, char **av);
-t_stack	*ft_stacknew(int data);
-void	ft_stackadd_back(t_stack **lst, t_stack *new);
-void	ft_stackdelone(t_stack *lst, void (*del)(void *));
-void	ft_stackclear(t_stack **lst, void (*del)(void *));
-char	**check_arg(int ac, char **av);
-void	ft_error(void);
+t_stack				*stack_init(t_stack **stack, char **av);
+t_stack				*ft_stacknew(int data);
+void				ft_stackadd_back(t_stack **lst, t_stack *new);
+void				ft_stackdelone(t_stack *lst, void (*del)(void *));
+void				ft_stackclear(t_stack **lst, void (*del)(void *));
+char				**check_arg(int ac, char **av);
+void				ft_error(void);
 
 #endif // PUSH_SWAP_H
