@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:50:30 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/25 21:39:02 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/25 22:13:15 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,7 @@ int main(int ac , char **av)
         initstack(var);
         isdup(var->head_a);
         issorted(var->head_a);
-        s_stack * temp = var->head_a;
-        printf("%d here last", temp->last->val );       
+        s_stack * temp = var->head_a;    
             while(temp)
             {
             printf("%d              \n", temp->val);

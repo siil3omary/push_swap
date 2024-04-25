@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 17:07:16 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/25 21:33:21 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/25 22:13:58 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	ft_stackadd_back(s_stack **lst, s_stack *new)
         return ;
     if (*lst == NULL){
         *lst = new;
-        new->head = new;
+
         
     }
     else
     {
         temp = *lst;
-        temp->head = *lst;
+
         while (temp->next != NULL)
             temp = temp->next;
         temp->next = new;
@@ -54,7 +54,7 @@ void    ft_stackadd_front(s_stack **lst, s_stack *new)
     }
     new->next = *lst;
     *lst = new;
-    (*lst)->head = new;
+
 }
 
 void    ft_stackclear(s_stack **lst)
