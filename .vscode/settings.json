@@ -57,6 +57,8 @@
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
-    "push_swap.h": "c"
+    "push_swap.h": "c",
+    "libft.h": "c",
+    "pushswap.h": "c"
   }
 }
