@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:50:30 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/26 13:37:58 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/26 14:50:09 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ void	sorttree(s_var *var)
 }
 void	sortfour(s_var *var)
 {
+	if(issorted(var->head_a))
+	return;
 	int		min;
 	s_stack	*tmp;
 
@@ -189,7 +191,7 @@ void	isdup(s_stack *stack)
 }
 void	initstack(s_var *var)
 {
-	int	i;
+
 	int	y;
 
 	var->head_a = NULL;
@@ -231,12 +233,11 @@ int	issorted(s_stack *stack)
 int	main(int ac, char **av)
 {
 	s_var	*var;
-	s_stack	*temp;
-	int		i;
+	// s_stack	*temp;
 
 	if (ac >= 2)
 	{
-		i = 1;
+
 		var = (s_var *)malloc(sizeof(s_var));
 		joinargs(av, ac, var);
 		initstack(var);
@@ -244,17 +245,12 @@ int	main(int ac, char **av)
 		if (issorted(var->head_a))
 			exit(0);
 		sortit(var);
-		// rrr(&var->head_a, &var->head_b);
-		// ra(&var->head_a);
-		// ra(&var->head_a);
-		// ra(&var->head_a);
-		// ra(&var->head_a);
-		temp = var->head_a;
-		while (temp)
-		{
-			printf("%d      \n", temp->val);
-			temp = temp->next;
-		}
+		// temp = var->head_a;
+		// while (temp)
+		// {
+		// 	printf("%d      \n", temp->val);
+		// 	temp = temp->next;
+		// }
 	}
 	return (0);
 }
