@@ -6,12 +6,146 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:50:30 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/25 23:48:47 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/26 13:37:58 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
+int	search_min(s_var *var)
+{
+	int		min;
+	s_stack	*temp;
+
+	temp = var->head_a;
+	min = temp->val;
+	while (temp)
+	{
+		if (temp->val < min)
+			min = temp->val;
+		temp = temp->next;
+	}
+	return (min);
+}
+
+void	sortfive(s_var *var)
+{
+	int		min;
+	s_stack	*tmp;
+
+	min = search_min(var);
+	tmp = var->head_a;
+	if (min == tmp->val)
+	{
+		pb(&var->head_a, &var->head_b);
+		sortfour(var);
+		pa(&var->head_a, &var->head_b);
+	}
+	else if (min == tmp->next->val)
+	{
+		sa(&var->head_a);
+		pb(&var->head_a, &var->head_b);
+		sortfour(var);
+		pa(&var->head_a, &var->head_b);
+	}
+	else if (min == tmp->next->next->val)
+	{
+		rra(&var->head_a);
+		rra(&var->head_a);
+		rra(&var->head_a);
+		pb(&var->head_a, &var->head_b);
+		sortfour(var);
+		pa(&var->head_a, &var->head_b);
+	}
+	else if (min == tmp->next->next->next->val)
+	{
+		rra(&var->head_a);
+		rra(&var->head_a);
+		pb(&var->head_a, &var->head_b);
+		sortfour(var);
+		pa(&var->head_a, &var->head_b);
+	}
+	else if (min == tmp->next->next->next->next->val)
+	{
+		rra(&var->head_a);
+		pb(&var->head_a, &var->head_b);
+		sortfour(var);
+		pa(&var->head_a, &var->head_b);
+	}
+}
+
+void	sorttree(s_var *var)
+{
+	if (issorted(var->head_a))
+		return ;
+	if ((var->head_a->val > var->head_a->next->val)
+		&& var->head_a->next->next->val > var->head_a->val)
+		sa(&var->head_a);
+	else if (var->head_a->val > var->head_a->next->val
+		&& var->head_a->val > var->head_a->next->next->val
+		&& var->head_a->next->val > var->head_a->next->next->val)
+	{
+		sa(&var->head_a);
+		rra(&var->head_a);
+	}
+	else if (var->head_a->val > var->head_a->next->val
+		&& var->head_a->next->val < var->head_a->next->next->val)
+		ra(&var->head_a);
+	else if (var->head_a->next->val > var->head_a->val
+		&& var->head_a->next->val > var->head_a->next->next->val
+		&& var->head_a->val < var->head_a->next->next->val)
+	{
+		sa(&var->head_a);
+		ra(&var->head_a);
+	}
+	else
+		rra(&var->head_a);
+}
+void	sortfour(s_var *var)
+{
+	int		min;
+	s_stack	*tmp;
+
+	min = search_min(var);
+	tmp = var->head_a;
+	if (min == tmp->val)
+	{
+		pb(&var->head_a, &var->head_b);
+		sorttree(var);
+		pa(&var->head_a, &var->head_b);
+	}
+	else if (min == tmp->next->val)
+	{
+		sa(&var->head_a);
+		pb(&var->head_a, &var->head_b);
+		sorttree(var);
+		pa(&var->head_a, &var->head_b);
+	}
+	else if (min == tmp->next->next->val)
+	{
+		rra(&var->head_a);
+		rra(&var->head_a);
+		pb(&var->head_a, &var->head_b);
+		sorttree(var);
+		pa(&var->head_a, &var->head_b);
+	}
+	else
+	{
+		rra(&var->head_a);
+		pb(&var->head_a, &var->head_b);
+		sorttree(var);
+		pa(&var->head_a, &var->head_b);
+	}
+}
+void	sortit(s_var *var)
+{
+	if (var->size == 3)
+		sorttree(var);
+	else if (var->size == 4)
+		sortfour(var);
+	else if (var->size == 5)
+		sortfive(var);
+}
 void	joinargs(char **av, int ac, s_var *var)
 {
 	char	*tmp;
@@ -59,18 +193,19 @@ void	initstack(s_var *var)
 	int	y;
 
 	var->head_a = NULL;
-	i = 0;
-	while (var->args[i])
+	var->size = 0;
+	while (var->args[var->size])
 	{
 		y = 0;
-		while (var->args[i][y])
+		while (var->args[var->size][y])
 		{
-			if (!ft_isdigit(var->args[i][y]))
+			if (!ft_isdigit(var->args[var->size][y]))
 				errornl();
 			y++;
 		}
-		ft_stackadd_back(&var->head_a, ft_stacknew(ft_atoi(var->args[i])));
-		i++;
+		ft_stackadd_back(&var->head_a,
+			ft_stacknew(ft_atoi(var->args[var->size])));
+		var->size++;
 	}
 }
 void	errornl(void)
@@ -79,7 +214,7 @@ void	errornl(void)
 	exit(1);
 }
 
-void	issorted(s_stack *stack)
+int	issorted(s_stack *stack)
 {
 	s_stack	*temp;
 
@@ -87,10 +222,10 @@ void	issorted(s_stack *stack)
 	while (temp->next)
 	{
 		if (temp->val > temp->next->val)
-			return ;
+			return (0);
 		temp = temp->next;
 	}
-	exit(0);
+	return (1);
 }
 
 int	main(int ac, char **av)
@@ -106,20 +241,14 @@ int	main(int ac, char **av)
 		joinargs(av, ac, var);
 		initstack(var);
 		isdup(var->head_a);
-		issorted(var->head_a);
-        pb(&(var->head_a), &(var->head_b));
-        ra(&var->head_a);
-
-        pa(&(var->head_a), &(var->head_b));
-        
-        
-        ra(&var->head_a);
-        // ra(&var->head_a);
-        // ra(&var->head_a);
-        // ra(&var->head_a);
-        // ra(&var->head_a);
-
-
+		if (issorted(var->head_a))
+			exit(0);
+		sortit(var);
+		// rrr(&var->head_a, &var->head_b);
+		// ra(&var->head_a);
+		// ra(&var->head_a);
+		// ra(&var->head_a);
+		// ra(&var->head_a);
 		temp = var->head_a;
 		while (temp)
 		{

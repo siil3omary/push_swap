@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/user/Desktop/push_swap",
-      "program": "/Users/user/Desktop/push_swap/build/Debug/outDebug"
+      "cwd": "/Users/aelomari/Desktop/push_swap/srcs",
+      "program": "/Users/aelomari/Desktop/push_swap/srcs/build/Debug/outDebug"
     }
   ]
 }

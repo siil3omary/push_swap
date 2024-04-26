@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:51:46 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/25 23:45:18 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/26 13:38:41 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,16 @@ typedef struct var
 {
 	char			*avs;
 	char			**args;
+	int				size;
 	struct t_stack	*head_a;
 	struct t_stack	*head_b;
 
 }					s_var;
 
+void				sorttree(s_var *var);
+void				sortfour(s_var *var);
 void				errornl(void);
+int					issorted(s_stack *stack);
 void				pb(s_stack **a, s_stack **b);
 void				pa(s_stack **a, s_stack **b);
 void				sa(s_stack **a);
@@ -41,8 +45,12 @@ void				sb(s_stack **b);
 void				ss(s_stack **a, s_stack **b);
 void				ra(s_stack **a);
 void				rb(s_stack **b);
+void				rr(s_stack **a, s_stack **b);
 void				ft_stackadd_back(s_stack **lst, s_stack *new);
 void				ft_stackadd_front(s_stack **lst, s_stack *new);
+void				rra(s_stack **a);
+void				rrb(s_stack **b);
+void				rrr(s_stack **a, s_stack **b);
 void				ft_stackclear(s_stack **lst);
 s_stack				*ft_stacknew(int content);
 int					ft_stacksize(s_stack *lst);
