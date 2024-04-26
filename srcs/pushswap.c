@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:50:30 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/26 18:56:55 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/26 20:23:57 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,9 @@ void	joinargs(char **av, int ac, s_var *var)
 		i++;
 	}
 	var->args = ft_split(var->avs, ' ');
+	if (!*var->args)
+		errornl();
+	
 }
 
 void	isdup(s_stack *stack)
@@ -274,18 +277,20 @@ void	bubblesort(s_var *var)
 
 void	indexit(s_var *var)
 {
-	int		i;
 	s_stack	*tmp;
+	int 	i;
 
 	tmp = var->head_a;
-	i = 0;
 	while (tmp)
 	{
 		i = 0;
-		while (i < var->size)
+		while (i < var->size )
 		{
 			if (tmp->val == var->arr[i])
+			{
 				tmp->index = i;
+				break;
+			}
 			i++;
 		}
 		tmp = tmp->next;
@@ -297,9 +302,9 @@ void	indexstack(s_var *var)
 	int		i;
 	s_stack	*tmp;
 
-	i = 0;
-	var->arr = (int *)malloc(sizeof(var->size - 1) * sizeof(int));
+	var->arr = (int *)malloc((var->size) * sizeof(int));
 	tmp = var->head_a;
+	i = 0;
 	while (tmp)
 	{
 		var->arr[i] = tmp->val;
@@ -320,17 +325,17 @@ int	main(int ac, char **av)
 		joinargs(av, ac, var);
 		initstack(var);
 		isdup(var->head_a);
-		indexstack(var);
 		if (issorted(var->head_a))
 			exit(0);
+		indexstack(var);
 		sortit(var);
-		// s_stack *tmp = var->head_a;
-		// tmp = var->head_a;
-		// while (tmp)
-		// {
-		// 	printf("%d      %d\n", tmp->index , tmp->val);
-		// 	tmp = tmp->next;
-		// }
+		s_stack *tmp = var->head_a;
+		tmp = var->head_a;
+		while (tmp)
+		{
+			printf("index  = %d \tnum %d\n", tmp->index , tmp->val);
+			tmp = tmp->next;
+		}
 	}
 	return (0);
 }

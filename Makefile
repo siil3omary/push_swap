@@ -9,7 +9,7 @@
 
 NAME        := push_swap
 CC        := cc
-FLAGS    := -Wall -Wextra -Werror -fsanitize=address    # -g -fsanitize=address
+FLAGS    := -Wall -Wextra -Werror     -g -fsanitize=address
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
