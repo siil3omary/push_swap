@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:51:46 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/26 13:38:41 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/26 18:05:23 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 typedef struct t_stack
 {
 	int				val;
-	int				size;
+	int				index;
 	struct t_stack	*next;
 }					s_stack;
 
@@ -29,6 +29,7 @@ typedef struct var
 	char			*avs;
 	char			**args;
 	int				size;
+	int				*arr;
 	struct t_stack	*head_a;
 	struct t_stack	*head_b;
 

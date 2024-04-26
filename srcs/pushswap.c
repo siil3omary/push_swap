@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:50:30 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/26 14:50:09 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/26 18:56:55 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	sortfive(s_var *var)
 	int		min;
 	s_stack	*tmp;
 
+	if (issorted(var->head_a))
+		return ;
 	min = search_min(var);
 	tmp = var->head_a;
 	if (min == tmp->val)
@@ -44,6 +46,8 @@ void	sortfive(s_var *var)
 	else if (min == tmp->next->val)
 	{
 		sa(&var->head_a);
+		if (issorted(var->head_a))
+			return ;
 		pb(&var->head_a, &var->head_b);
 		sortfour(var);
 		pa(&var->head_a, &var->head_b);
@@ -53,6 +57,8 @@ void	sortfive(s_var *var)
 		rra(&var->head_a);
 		rra(&var->head_a);
 		rra(&var->head_a);
+		if (issorted(var->head_a))
+			return ;
 		pb(&var->head_a, &var->head_b);
 		sortfour(var);
 		pa(&var->head_a, &var->head_b);
@@ -61,6 +67,8 @@ void	sortfive(s_var *var)
 	{
 		rra(&var->head_a);
 		rra(&var->head_a);
+		if (issorted(var->head_a))
+			return ;
 		pb(&var->head_a, &var->head_b);
 		sortfour(var);
 		pa(&var->head_a, &var->head_b);
@@ -68,6 +76,8 @@ void	sortfive(s_var *var)
 	else if (min == tmp->next->next->next->next->val)
 	{
 		rra(&var->head_a);
+		if (issorted(var->head_a))
+			return ;
 		pb(&var->head_a, &var->head_b);
 		sortfour(var);
 		pa(&var->head_a, &var->head_b);
@@ -103,11 +113,11 @@ void	sorttree(s_var *var)
 }
 void	sortfour(s_var *var)
 {
-	if(issorted(var->head_a))
-	return;
 	int		min;
 	s_stack	*tmp;
 
+	if (issorted(var->head_a))
+		return ;
 	min = search_min(var);
 	tmp = var->head_a;
 	if (min == tmp->val)
@@ -119,6 +129,8 @@ void	sortfour(s_var *var)
 	else if (min == tmp->next->val)
 	{
 		sa(&var->head_a);
+		if (issorted(var->head_a))
+			return ;
 		pb(&var->head_a, &var->head_b);
 		sorttree(var);
 		pa(&var->head_a, &var->head_b);
@@ -127,6 +139,8 @@ void	sortfour(s_var *var)
 	{
 		rra(&var->head_a);
 		rra(&var->head_a);
+		if (issorted(var->head_a))
+			return ;
 		pb(&var->head_a, &var->head_b);
 		sorttree(var);
 		pa(&var->head_a, &var->head_b);
@@ -134,6 +148,8 @@ void	sortfour(s_var *var)
 	else
 	{
 		rra(&var->head_a);
+		if (issorted(var->head_a))
+			return ;
 		pb(&var->head_a, &var->head_b);
 		sorttree(var);
 		pa(&var->head_a, &var->head_b);
@@ -191,7 +207,6 @@ void	isdup(s_stack *stack)
 }
 void	initstack(s_var *var)
 {
-
 	int	y;
 
 	var->head_a = NULL;
@@ -230,26 +245,91 @@ int	issorted(s_stack *stack)
 	return (1);
 }
 
+void	swap(int *a, int *b)
+{
+	int	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+void	bubblesort(s_var *var)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < var->size)
+	{
+		j = 0;
+		while (j < var->size - i - 1)
+		{
+			if (var->arr[j] > var->arr[j + 1])
+				swap(&var->arr[j], &var->arr[j + 1]);
+			j++;
+		}
+		i++;
+	}
+}
+
+void	indexit(s_var *var)
+{
+	int		i;
+	s_stack	*tmp;
+
+	tmp = var->head_a;
+	i = 0;
+	while (tmp)
+	{
+		i = 0;
+		while (i < var->size)
+		{
+			if (tmp->val == var->arr[i])
+				tmp->index = i;
+			i++;
+		}
+		tmp = tmp->next;
+	}
+}
+
+void	indexstack(s_var *var)
+{
+	int		i;
+	s_stack	*tmp;
+
+	i = 0;
+	var->arr = (int *)malloc(sizeof(var->size - 1) * sizeof(int));
+	tmp = var->head_a;
+	while (tmp)
+	{
+		var->arr[i] = tmp->val;
+		i++;
+		tmp = tmp->next;
+	}
+	bubblesort(var);
+	indexit(var);
+}
 int	main(int ac, char **av)
 {
 	s_var	*var;
-	// s_stack	*temp;
 
+	// s_stack	*temp;
 	if (ac >= 2)
 	{
-
 		var = (s_var *)malloc(sizeof(s_var));
 		joinargs(av, ac, var);
 		initstack(var);
 		isdup(var->head_a);
+		indexstack(var);
 		if (issorted(var->head_a))
 			exit(0);
 		sortit(var);
-		// temp = var->head_a;
-		// while (temp)
+		// s_stack *tmp = var->head_a;
+		// tmp = var->head_a;
+		// while (tmp)
 		// {
-		// 	printf("%d      \n", temp->val);
-		// 	temp = temp->next;
+		// 	printf("%d      %d\n", tmp->index , tmp->val);
+		// 	tmp = tmp->next;
 		// }
 	}
 	return (0);
