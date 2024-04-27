@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:50:30 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/27 13:26:14 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/27 14:37:58 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -329,7 +329,7 @@ int	get_size(s_stack *stack)
 int	main(int ac, char **av)
 {
 	s_var	*var;
-	s_stack	*tmp;
+	// s_stack	*tmp;
 
 	if (ac >= 2)
 	{
@@ -341,25 +341,25 @@ int	main(int ac, char **av)
 			exit(0);
 		indexstack(var);
 		sortit(var);
-		tmp = var->head_a;
-		printf("_________________________________________");
-		printf("_________________________________________\n");
-		while (tmp)
-		{
-			printf("index  = %d \tnum %d\n", tmp->index, tmp->val);
-			tmp = tmp->next;
-		}
-		printf("_________________________________________\n");
-		tmp = var->head_b;
-		while (tmp)
-		{
-			printf("index  = %d \tnum %d\n", tmp->index, tmp->val);
-			tmp = tmp->next;
-		}
-		printf("_________________________________________");
-		printf("_________________________________________");
-		printf("|%d|", get_size(var->head_a));
-		printf("_________________________________________");
+		// tmp = var->head_a;
+		// printf("_________________________________________");
+		// printf("_________________________________________\n");
+		// while (tmp)
+		// {
+		// 	printf("index  = %d \tnum %d\n", tmp->index, tmp->val);
+		// 	tmp = tmp->next;
+		// }
+		// printf("_________________________________________\n");
+		// tmp = var->head_b;
+		// while (tmp)
+		// {
+		// 	printf("index  = %d \tnum %d\n", tmp->index, tmp->val);
+		// 	tmp = tmp->next;
+		// }
+		// printf("_________________________________________");
+		// printf("_________________________________________");
+		// printf("|%d|", get_size(var->head_a));
+		// printf("_________________________________________");
 	}
 	return (0);
 }
