@@ -9,7 +9,7 @@
 
 NAME        := push_swap
 CC        := cc
-FLAGS    := -Wall -Wextra -Werror     -g -fsanitize=address
+FLAGS    := -Wall -Wextra -Werror
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
@@ -61,6 +61,7 @@ SRCS        :=      srcs/list_utils.c \
                           srcs/lib/ft_itoa.c \
                           srcs/lib/ft_tolower.c \
                           srcs/pushswap.c \
+                          srcs/send_to_b.c \
                           
 OBJS        := $(SRCS:.c=.o)
 

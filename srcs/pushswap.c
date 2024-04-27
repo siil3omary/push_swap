@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:50:30 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/26 20:23:57 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/27 13:26:14 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,8 @@ void	sortit(s_var *var)
 		sortfour(var);
 	else if (var->size == 5)
 		sortfive(var);
+	else
+		send_to_b(var);
 }
 void	joinargs(char **av, int ac, s_var *var)
 {
@@ -187,7 +189,6 @@ void	joinargs(char **av, int ac, s_var *var)
 	var->args = ft_split(var->avs, ' ');
 	if (!*var->args)
 		errornl();
-	
 }
 
 void	isdup(s_stack *stack)
@@ -224,7 +225,7 @@ void	initstack(s_var *var)
 			y++;
 		}
 		ft_stackadd_back(&var->head_a,
-			ft_stacknew(ft_atoi(var->args[var->size])));
+			ft_stacknew(ft_atoi(var->args[var->size]), 0));
 		var->size++;
 	}
 }
@@ -278,19 +279,16 @@ void	bubblesort(s_var *var)
 void	indexit(s_var *var)
 {
 	s_stack	*tmp;
-	int 	i;
+	int		i;
 
 	tmp = var->head_a;
 	while (tmp)
 	{
 		i = 0;
-		while (i < var->size )
+		while (i < var->size)
 		{
 			if (tmp->val == var->arr[i])
-			{
 				tmp->index = i;
-				break;
-			}
 			i++;
 		}
 		tmp = tmp->next;
@@ -308,17 +306,31 @@ void	indexstack(s_var *var)
 	while (tmp)
 	{
 		var->arr[i] = tmp->val;
-		i++;
 		tmp = tmp->next;
+		i++;
 	}
 	bubblesort(var);
 	indexit(var);
 }
+int	get_size(s_stack *stack)
+{
+	s_stack	*tmp;
+	int		i;
+
+	tmp = stack;
+	i = 0;
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	return (i);
+}
 int	main(int ac, char **av)
 {
 	s_var	*var;
+	s_stack	*tmp;
 
-	// s_stack	*temp;
 	if (ac >= 2)
 	{
 		var = (s_var *)malloc(sizeof(s_var));
@@ -329,13 +341,25 @@ int	main(int ac, char **av)
 			exit(0);
 		indexstack(var);
 		sortit(var);
-		s_stack *tmp = var->head_a;
 		tmp = var->head_a;
+		printf("_________________________________________");
+		printf("_________________________________________\n");
 		while (tmp)
 		{
-			printf("index  = %d \tnum %d\n", tmp->index , tmp->val);
+			printf("index  = %d \tnum %d\n", tmp->index, tmp->val);
 			tmp = tmp->next;
 		}
+		printf("_________________________________________\n");
+		tmp = var->head_b;
+		while (tmp)
+		{
+			printf("index  = %d \tnum %d\n", tmp->index, tmp->val);
+			tmp = tmp->next;
+		}
+		printf("_________________________________________");
+		printf("_________________________________________");
+		printf("|%d|", get_size(var->head_a));
+		printf("_________________________________________");
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:21:33 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/26 09:02:14 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/27 10:15:09 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,4 @@ void	ra(s_stack **a)
 	first->next = NULL;
 	write(1, "ra\n", 3);
 }
+

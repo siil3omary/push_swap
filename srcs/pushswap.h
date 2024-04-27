@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:51:46 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/26 19:54:25 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/27 13:32:36 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,12 @@ typedef struct var
 
 void				sorttree(s_var *var);
 void				sortfour(s_var *var);
+void				sortfive(s_var *var);
 void				errornl(void);
 int					issorted(s_stack *stack);
+int					get_size(s_stack *stack);
+void				send_to_b(s_var *var);
+void				sortit(s_var *var);
 void				pb(s_stack **a, s_stack **b);
 void				pa(s_stack **a, s_stack **b);
 void				sa(s_stack **a);
@@ -53,6 +57,6 @@ void				rra(s_stack **a);
 void				rrb(s_stack **b);
 void				rrr(s_stack **a, s_stack **b);
 void				ft_stackclear(s_stack **lst);
-s_stack				*ft_stacknew(int content);
+s_stack				*ft_stacknew(int val, int index);
 int					ft_stacksize(s_stack *lst);
 #endif // PUSHSWAP_H

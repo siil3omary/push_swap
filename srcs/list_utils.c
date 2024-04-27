@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 17:07:16 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/26 09:03:06 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/27 13:20:43 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_stackadd_back(s_stack **lst, s_stack *new)
 	}
 }
 
-s_stack	*ft_stacknew(int val)
+s_stack	*ft_stacknew(int val, int index)
 {
 	s_stack	*new;
 
@@ -42,6 +42,7 @@ s_stack	*ft_stacknew(int val)
 	if (new == NULL)
 		return (NULL);
 	new->val = val;
+	new->index = index;
 	new->next = NULL;
 	return (new);
 }
