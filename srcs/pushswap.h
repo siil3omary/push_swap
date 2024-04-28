@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:51:46 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/27 13:32:36 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/28 14:56:07 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct var
 
 }					s_var;
 
+int in_stack(s_stack *stack, int piv);
 void				sorttree(s_var *var);
 void				sortfour(s_var *var);
 void				sortfive(s_var *var);
@@ -42,6 +43,8 @@ void				errornl(void);
 int					issorted(s_stack *stack);
 int					get_size(s_stack *stack);
 void				send_to_b(s_var *var);
+void send_to_a(s_var *var);
+int	search_max(s_var *var);
 void				sortit(s_var *var);
 void				pb(s_stack **a, s_stack **b);
 void				pa(s_stack **a, s_stack **b);

@@ -6,24 +6,31 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:21:33 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/27 10:15:09 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/28 13:48:38 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pushswap.h"
 
-void	ra(s_stack **a)
+void ra(s_stack **a)
 {
-	s_stack	*first;
-	s_stack	*secend;
+    if (!a || !(*a) || !((*a)->next))
+        return; // No rotation needed if the stack is empty or has only one element
 
-	first = *a;
-	secend = first->next;
-	while (secend->next)
-		secend = secend->next;
-	secend->next = first;
-	*a = first->next;
-	first->next = NULL;
-	write(1, "ra\n", 3);
+    s_stack *first = *a;
+    s_stack *second = first->next;
+
+    // Find the last element
+    while (second->next)
+        second = second->next;
+
+    // Perform rotation
+    second->next = first;
+    *a = second->next->next;
+    first->next = NULL;
+
+    // Output
+    write(1, "ra\n", 3);
 }
+
 

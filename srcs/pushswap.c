@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:50:30 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/27 14:37:58 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/28 15:00:28 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,22 @@ int	search_min(s_var *var)
 		temp = temp->next;
 	}
 	return (min);
+}
+
+int	search_max(s_var *var)
+{
+	int		max;
+	s_stack	*temp;
+
+	temp = var->head_a;
+	max = temp->val;
+	while (temp)
+	{
+		if (temp->val > max)
+			max = temp->val;
+		temp = temp->next;
+	}
+	return (max);
 }
 
 void	sortfive(s_var *var)
@@ -165,6 +181,7 @@ void	sortit(s_var *var)
 		sortfive(var);
 	else
 		send_to_b(var);
+		send_to_a(var);
 }
 void	joinargs(char **av, int ac, s_var *var)
 {
@@ -214,6 +231,7 @@ void	initstack(s_var *var)
 	int	y;
 
 	var->head_a = NULL;
+	var->head_b = NULL;
 	var->size = 0;
 	while (var->args[var->size])
 	{
@@ -312,20 +330,24 @@ void	indexstack(s_var *var)
 	bubblesort(var);
 	indexit(var);
 }
-int	get_size(s_stack *stack)
+int get_size(s_stack *stack)
 {
-	s_stack	*tmp;
-	int		i;
+    s_stack *tmp;
+    int i;
 
-	tmp = stack;
-	i = 0;
-	while (tmp)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
+    i = 0;
+    tmp = stack;
+    if (!tmp)
+        return 0;
+    while (tmp)
+    {
+        i++;
+        tmp = tmp->next;
+    }
+    return i;
 }
+
+
 int	main(int ac, char **av)
 {
 	s_var	*var;
@@ -334,15 +356,16 @@ int	main(int ac, char **av)
 	if (ac >= 2)
 	{
 		var = (s_var *)malloc(sizeof(s_var));
+
 		joinargs(av, ac, var);
 		initstack(var);
 		isdup(var->head_a);
 		if (issorted(var->head_a))
 			exit(0);
 		indexstack(var);
+		
 		sortit(var);
 		// tmp = var->head_a;
-		// printf("_________________________________________");
 		// printf("_________________________________________\n");
 		// while (tmp)
 		// {
@@ -350,7 +373,10 @@ int	main(int ac, char **av)
 		// 	tmp = tmp->next;
 		// }
 		// printf("_________________________________________\n");
+		// pb(&var->head_a, &var->head_b);
 		// tmp = var->head_b;
+		// if(!tmp)
+		// return 1;
 		// while (tmp)
 		// {
 		// 	printf("index  = %d \tnum %d\n", tmp->index, tmp->val);
