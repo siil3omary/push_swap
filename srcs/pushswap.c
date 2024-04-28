@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:50:30 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/28 15:00:28 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/28 18:02:31 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,9 +179,12 @@ void	sortit(s_var *var)
 		sortfour(var);
 	else if (var->size == 5)
 		sortfive(var);
-	else
+	else{
 		send_to_b(var);
 		send_to_a(var);
+		
+	}
+
 }
 void	joinargs(char **av, int ac, s_var *var)
 {
@@ -347,12 +350,23 @@ int get_size(s_stack *stack)
     return i;
 }
 
+void print_stack(s_stack *stack)
+{
+	s_stack *tmp;
+
+	tmp = stack;
+	while (tmp)
+	{
+		printf("index = %d \tval = %d\n", tmp->index, tmp->val);
+		tmp = tmp->next;
+	}
+}
 
 int	main(int ac, char **av)
 {
 	s_var	*var;
 	// s_stack	*tmp;
-
+	
 	if (ac >= 2)
 	{
 		var = (s_var *)malloc(sizeof(s_var));
@@ -363,6 +377,7 @@ int	main(int ac, char **av)
 		if (issorted(var->head_a))
 			exit(0);
 		indexstack(var);
+		
 		
 		sortit(var);
 		// tmp = var->head_a;
