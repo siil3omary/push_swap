@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:50:30 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/28 18:02:31 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:26:40 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int	search_max(s_var *var)
 	s_stack	*temp;
 
 	temp = var->head_a;
-	max = temp->val;
+	max = temp->index;
 	while (temp)
 	{
-		if (temp->val > max)
-			max = temp->val;
+		if (temp->index > max)
+			max = temp->index;
 		temp = temp->next;
 	}
 	return (max);
@@ -347,7 +347,7 @@ int get_size(s_stack *stack)
         i++;
         tmp = tmp->next;
     }
-    return i;
+    return i ;
 }
 
 void print_stack(s_stack *stack)
