@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:50:30 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/29 18:26:40 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/29 21:10:03 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,68 +37,48 @@ int	search_max(s_var *var)
 	max = temp->index;
 	while (temp)
 	{
-		if (temp->index > max)
+		if (temp->val > max)
 			max = temp->index;
 		temp = temp->next;
 	}
 	return (max);
 }
-
-void	sortfive(s_var *var)
+void sortfive(s_var *var)
 {
-	int		min;
-	s_stack	*tmp;
+    if (issorted(var->head_a))
+        return;
 
-	if (issorted(var->head_a))
-		return ;
-	min = search_min(var);
-	tmp = var->head_a;
-	if (min == tmp->val)
+    int min = search_min(var);
+    s_stack *tmp = var->head_a;
+
+    int i = 0;
+    while (tmp->val != min)
 	{
-		pb(&var->head_a, &var->head_b);
-		sortfour(var);
-		pa(&var->head_a, &var->head_b);
-	}
-	else if (min == tmp->next->val)
+        tmp = tmp->next;
+        i++;
+    }
+    if (i == 0)
 	{
-		sa(&var->head_a);
-		if (issorted(var->head_a))
-			return ;
-		pb(&var->head_a, &var->head_b);
-		sortfour(var);
-		pa(&var->head_a, &var->head_b);
-	}
-	else if (min == tmp->next->next->val)
+        pb(&var->head_a, &var->head_b);
+        sortfour(var);
+        pa(&var->head_a, &var->head_b);
+    } else
 	{
-		rra(&var->head_a);
-		rra(&var->head_a);
-		rra(&var->head_a);
-		if (issorted(var->head_a))
-			return ;
-		pb(&var->head_a, &var->head_b);
-		sortfour(var);
-		pa(&var->head_a, &var->head_b);
-	}
-	else if (min == tmp->next->next->next->val)
-	{
-		rra(&var->head_a);
-		rra(&var->head_a);
-		if (issorted(var->head_a))
-			return ;
-		pb(&var->head_a, &var->head_b);
-		sortfour(var);
-		pa(&var->head_a, &var->head_b);
-	}
-	else if (min == tmp->next->next->next->next->val)
-	{
-		rra(&var->head_a);
-		if (issorted(var->head_a))
-			return ;
-		pb(&var->head_a, &var->head_b);
-		sortfour(var);
-		pa(&var->head_a, &var->head_b);
-	}
+        if (i <= 2)
+            while (i--)
+                ra(&var->head_a);
+		else
+		{
+            i = 5 - i;
+            while (i--)
+                rra(&var->head_a);
+        }
+        pb(&var->head_a, &var->head_b);
+        sortfour(var);
+        pa(&var->head_a, &var->head_b);
+    }
 }
+
 
 void	sorttree(s_var *var)
 {
@@ -182,7 +162,6 @@ void	sortit(s_var *var)
 	else{
 		send_to_b(var);
 		send_to_a(var);
-		
 	}
 
 }
