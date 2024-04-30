@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:50:30 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/29 21:10:03 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/04/30 12:56:34 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,48 +37,50 @@ int	search_max(s_var *var)
 	max = temp->index;
 	while (temp)
 	{
-		if (temp->val > max)
+		if (temp->index > max)
 			max = temp->index;
 		temp = temp->next;
 	}
 	return (max);
 }
-void sortfive(s_var *var)
+void	sortfive(s_var *var)
 {
-    if (issorted(var->head_a))
-        return;
+	int		min;
+	s_stack	*tmp;
+	int		i;
 
-    int min = search_min(var);
-    s_stack *tmp = var->head_a;
-
-    int i = 0;
-    while (tmp->val != min)
+	if (issorted(var->head_a))
+		return ;
+	min = search_min(var);
+	tmp = var->head_a;
+	i = 0;
+	while (tmp->val != min)
 	{
-        tmp = tmp->next;
-        i++;
-    }
-    if (i == 0)
+		tmp = tmp->next;
+		i++;
+	}
+	if (i == 0)
 	{
-        pb(&var->head_a, &var->head_b);
-        sortfour(var);
-        pa(&var->head_a, &var->head_b);
-    } else
+		pb(&var->head_a, &var->head_b);
+		sortfour(var);
+		pa(&var->head_a, &var->head_b);
+	}
+	else
 	{
-        if (i <= 2)
-            while (i--)
-                ra(&var->head_a);
+		if (i <= 2)
+			while (i--)
+				ra(&var->head_a);
 		else
 		{
-            i = 5 - i;
-            while (i--)
-                rra(&var->head_a);
-        }
-        pb(&var->head_a, &var->head_b);
-        sortfour(var);
-        pa(&var->head_a, &var->head_b);
-    }
+			i = 5 - i;
+			while (i--)
+				rra(&var->head_a);
+		}
+		pb(&var->head_a, &var->head_b);
+		sortfour(var);
+		pa(&var->head_a, &var->head_b);
+	}
 }
-
 
 void	sorttree(s_var *var)
 {
@@ -159,11 +161,11 @@ void	sortit(s_var *var)
 		sortfour(var);
 	else if (var->size == 5)
 		sortfive(var);
-	else{
+	else
+	{
 		send_to_b(var);
 		send_to_a(var);
 	}
-
 }
 void	joinargs(char **av, int ac, s_var *var)
 {
@@ -312,26 +314,26 @@ void	indexstack(s_var *var)
 	bubblesort(var);
 	indexit(var);
 }
-int get_size(s_stack *stack)
+int	get_size(s_stack *stack)
 {
-    s_stack *tmp;
-    int i;
+	s_stack	*tmp;
+	int		i;
 
-    i = 0;
-    tmp = stack;
-    if (!tmp)
-        return 0;
-    while (tmp)
-    {
-        i++;
-        tmp = tmp->next;
-    }
-    return i ;
+	i = 0;
+	tmp = stack;
+	if (!tmp)
+		return (0);
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	return (i);
 }
 
-void print_stack(s_stack *stack)
+void	print_stack(s_stack *stack)
 {
-	s_stack *tmp;
+	s_stack	*tmp;
 
 	tmp = stack;
 	while (tmp)
@@ -344,21 +346,20 @@ void print_stack(s_stack *stack)
 int	main(int ac, char **av)
 {
 	s_var	*var;
+
 	// s_stack	*tmp;
-	
 	if (ac >= 2)
 	{
 		var = (s_var *)malloc(sizeof(s_var));
-
 		joinargs(av, ac, var);
 		initstack(var);
 		isdup(var->head_a);
 		if (issorted(var->head_a))
 			exit(0);
 		indexstack(var);
-		
-		
 		sortit(var);
+		// printf("_________________________________________\n");
+		// print_stack(var->head_a);
 		// tmp = var->head_a;
 		// printf("_________________________________________\n");
 		// while (tmp)
@@ -370,7 +371,7 @@ int	main(int ac, char **av)
 		// pb(&var->head_a, &var->head_b);
 		// tmp = var->head_b;
 		// if(!tmp)
-		// return 1;
+		// return (1);
 		// while (tmp)
 		// {
 		// 	printf("index  = %d \tnum %d\n", tmp->index, tmp->val);
