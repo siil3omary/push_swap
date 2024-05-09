@@ -6,13 +6,13 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 20:17:00 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/25 15:42:32 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:01:27 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*constr(char  *s1, char  *s2)
+static char	*constr(char *s1, char *s2)
 {
 	size_t	all_len;
 	char	*result;
@@ -34,7 +34,7 @@ static char	*constr(char  *s1, char  *s2)
 	return (result);
 }
 
-char	*ft_strjoin(char  *s1, char  *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	if (!s1 || !s2)
 	{

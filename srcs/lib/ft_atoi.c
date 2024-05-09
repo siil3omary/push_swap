@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 00:42:58 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/25 17:38:06 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:01:04 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 long	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	sign;
+	int		i;
+	int		sign;
 	long	nbr;
 
 	i = 0;
@@ -34,7 +34,7 @@ long	ft_atoi(const char *nptr)
 	while (nptr[i] && nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		nbr = nbr * 10 + (nptr[i] - '0');
-		if((nbr > 2147483648 && sign == -1) || (nbr > 2147483647 && sign == 1))
+		if ((nbr > 2147483648 && sign == -1) || (nbr > 2147483647 && sign == 1))
 			errornl();
 		i++;
 	}

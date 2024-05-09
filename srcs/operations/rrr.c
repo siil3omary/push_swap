@@ -6,18 +6,18 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:46:12 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/26 10:29:13 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:58:19 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pushswap.h"
 
-void	rrr(s_stack **a, s_stack **b)
+void	rrr(t_stack **a, t_stack **b)
 {
-	s_stack	*temp2a;
-	s_stack	*tempa;
-	s_stack	*temp2b;
-	s_stack	*tempb;
+	t_stack	*temp2a;
+	t_stack	*tempa;
+	t_stack	*temp2b;
+	t_stack	*tempb;
 
 	if ((*a == NULL || (*a)->next == NULL) || (*b == NULL
 			|| (*b)->next == NULL))

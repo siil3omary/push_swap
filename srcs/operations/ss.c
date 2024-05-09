@@ -6,18 +6,18 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:17:23 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/26 09:02:44 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:58:07 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pushswap.h"
 
-void	ss(s_stack **a, s_stack **b)
+void	ss(t_stack **a, t_stack **b)
 {
-	s_stack	*firstb;
-	s_stack	*firsta;
-	s_stack	*secendb;
-	s_stack	*secenda;
+	t_stack	*firstb;
+	t_stack	*firsta;
+	t_stack	*secendb;
+	t_stack	*secenda;
 
 	if ((*b == NULL || (*b)->next == NULL) || (*a == NULL
 			|| (*a)->next == NULL))

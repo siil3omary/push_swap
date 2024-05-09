@@ -6,28 +6,26 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 10:54:22 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/28 17:14:06 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:00:24 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static void	calcul_piv(int *rem, int *pivot_1, int *pivot_2, s_stack *a)
+static void	calcul_piv(int *rem, int *pivot_1, int *pivot_2, t_stack *a)
 {
 	*rem = *pivot_1;
 	*pivot_2 = (get_size(a) / 6) + (*pivot_1);
 	*pivot_1 += (get_size(a) / 3);
 }
 
-int	in_stack(s_stack *stack, int piv)
+int	in_stack(t_stack *stack, int piv)
 {
-	s_stack	*tmp;
+	t_stack	*tmp;
 
 	tmp = stack;
 	if (!stack)
-	{
 		return (-1);
-	}
 	while (tmp)
 	{
 		if (tmp->index < piv)
@@ -36,7 +34,8 @@ int	in_stack(s_stack *stack, int piv)
 	}
 	return (0);
 }
-void	send_to_b(s_var *var)
+
+void	send_to_b(t_var *var)
 {
 	int	pivot_1;
 	int	pivot_2;

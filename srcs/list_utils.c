@@ -6,15 +6,15 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 17:07:16 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/28 17:38:13 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/08 22:03:00 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	ft_stackadd_back(s_stack **lst, s_stack *new)
+void	fs_stacadd_back(t_stack **lst, t_stack *new)
 {
-	s_stack	*temp;
+	t_stack	*temp;
 
 	if (lst == NULL || new == NULL)
 		return ;
@@ -34,11 +34,11 @@ void	ft_stackadd_back(s_stack **lst, s_stack *new)
 	}
 }
 
-s_stack	*ft_stacknew(int val, int index)
+t_stack	*fs_stacnew(int val, int index)
 {
-	s_stack	*new;
+	t_stack	*new;
 
-	new = (s_stack *)malloc(sizeof(s_stack));
+	new = (t_stack *)malloc(sizeof(t_stack));
 	if (new == NULL)
 		return (NULL);
 	new->val = val;
@@ -47,7 +47,7 @@ s_stack	*ft_stacknew(int val, int index)
 	return (new);
 }
 
-void	ft_stackadd_front(s_stack **lst, s_stack *new)
+void	fs_stacadd_front(t_stack **lst, t_stack *new)
 {
 	if (lst == NULL || new == NULL)
 	{
@@ -57,9 +57,9 @@ void	ft_stackadd_front(s_stack **lst, s_stack *new)
 	*lst = new;
 }
 
-void	ft_stackclear(s_stack **lst)
+void	fs_stacclear(t_stack **lst)
 {
-	s_stack	*temp;
+	t_stack	*temp;
 
 	if (lst == NULL)
 		return ;
@@ -71,7 +71,7 @@ void	ft_stackclear(s_stack **lst)
 	}
 }
 
-int	ft_stacksize(s_stack *lst)
+int	fs_stacsize(t_stack *lst)
 {
 	int	i;
 

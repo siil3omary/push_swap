@@ -6,16 +6,16 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 23:42:18 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/25 23:43:29 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:58:39 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pushswap.h"
 
-void	rb(s_stack **b)
+void	rb(t_stack **b)
 {
-	s_stack	*first;
-	s_stack	*secend;
+	t_stack	*first;
+	t_stack	*secend;
 
 	first = *b;
 	secend = first->next;

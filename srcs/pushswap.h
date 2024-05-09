@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:51:46 by aelomari          #+#    #+#             */
-/*   Updated: 2024/04/28 17:30:27 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:56:15 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,49 +17,59 @@
 # include <stdio.h>
 # include <unistd.h>
 
-typedef struct t_stack
+typedef struct s_stack
 {
 	int				val;
 	int				index;
-	struct t_stack	*next;
-}					s_stack;
+	struct s_stack	*next;
+}					t_stack;
 
-typedef struct var
+typedef struct s_var
 {
 	char			*avs;
 	char			**args;
 	int				size;
 	int				*arr;
-	struct t_stack	*head_a;
-	struct t_stack	*head_b;
+	struct s_stack	*head_a;
+	struct s_stack	*head_b;
 
-}					s_var;
-void print_stack(s_stack *stack);
-int in_stack(s_stack *stack, int piv);
-void				sorttree(s_var *var);
-void				sortfour(s_var *var);
-void				sortfive(s_var *var);
+}					t_var;
+
+int					in_stack(t_stack *stack, int piv);
+void				sortit(t_var *var);
+void				sorttree(t_var *var);
+void				sortfour(t_var *var);
+void				sortfive(t_var *var);
+void				joinargs(char **av, int ac, t_var *var);
+void				initstack(t_var *var);
+void				isdup(t_stack *stack);
 void				errornl(void);
-int					issorted(s_stack *stack);
-int					get_size(s_stack *stack);
-void				send_to_b(s_var *var);
-void send_to_a(s_var *var);
-int	search_max(s_var *var);
-void				sortit(s_var *var);
-void				pb(s_stack **a, s_stack **b);
-void				pa(s_stack **a, s_stack **b);
-void				sa(s_stack **a);
-void				sb(s_stack **b);
-void				ss(s_stack **a, s_stack **b);
-void				ra(s_stack **a);
-void				rb(s_stack **b);
-void				rr(s_stack **a, s_stack **b);
-void				ft_stackadd_back(s_stack **lst, s_stack *new);
-void				ft_stackadd_front(s_stack **lst, s_stack *new);
-void				rra(s_stack **a);
-void				rrb(s_stack **b);
-void				rrr(s_stack **a, s_stack **b);
-void				ft_stackclear(s_stack **lst);
-s_stack				*ft_stacknew(int val, int index);
-int					ft_stacksize(s_stack *lst);
+int					issorted(t_stack *stack);
+int					get_size(t_stack *stack);
+void				indexstack(t_var *var);
+void				send_to_b(t_var *var);
+void				bubblesort(t_var *var);
+void				send_to_a(t_var *var);
+int					search_min(t_var *var);
+int					search_max(t_var *var);
+int					issorted(t_stack *stack);
+void				indexit(t_var *var);
+void				swap(int *a, int *b);
+void				sortit(t_var *var);
+void				pb(t_stack **a, t_stack **b);
+void				pa(t_stack **a, t_stack **b);
+void				sa(t_stack **a);
+void				sb(t_stack **b);
+void				ss(t_stack **a, t_stack **b);
+void				ra(t_stack **a);
+void				rb(t_stack **b);
+void				rr(t_stack **a, t_stack **b);
+void				fs_stacadd_back(t_stack **lst, t_stack *new);
+void				fs_stacadd_front(t_stack **lst, t_stack *new);
+void				rra(t_stack **a);
+void				rrb(t_stack **b);
+void				rrr(t_stack **a, t_stack **b);
+void				fs_stacclear(t_stack **lst);
+t_stack				*fs_stacnew(int val, int index);
+int					fs_stacsize(t_stack *lst);
 #endif // PUSHSWAP_H

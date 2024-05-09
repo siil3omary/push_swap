@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 21:59:57 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/02 23:27:42 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/09 14:43:24 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	errornl(void)
 	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }
-void	joinargs(int ac, char **av, s_var *var)
+void	joinargs(int ac, char **av, t_var *var)
 {
 	int		i;
 	char	*tmp;
@@ -25,6 +25,7 @@ void	joinargs(int ac, char **av, s_var *var)
 
 	args = NULL;
 	var->avs = NULL;
+	var->args = NULL;
 	i = 1;
 	while (i <= ac - 1)
 	{
@@ -36,23 +37,108 @@ void	joinargs(int ac, char **av, s_var *var)
 		free(tmp);
 		i++;
 	}
-    var->args = ft_split(var->avs , ' ');
+	var->args = ft_split(var->avs, ' ');
 }
-void initstack(s_var *var)
+void	initstack(t_var *var)
 {
-    var->stack_a = NULL;
-    var->stack_b = NULL;
-    
-    
+	int	j;
+
+	var->stack_a = NULL;
+	var->stack_b = NULL;
+	var->size = 0;
+	while (var->args[var->size])
+	{
+		j = 0;
+		while (var->args[var->size][j])
+		{
+			if (!ft_isdigit(var->args[var->size][j]))
+				errornl();
+				j++;
+		}
+		ft_stackaddback(&var->stack_a,
+			ft_stacknew(ft_atoi(var->args[var->size])));
+		var->size++;
+	}
 }
+int	checking(char *line, t_var *var)
+{
+	if (!ft_strncmp(line, "ra\n", 3))
+		ra(&var->stack_a);
+	else if (!ft_strncmp(line, "rb\n", 3))
+		rb(&var->stack_b);
+	else if (!ft_strncmp(line, "pa\n", 3))
+		pa(&var->stack_a, &var->stack_b);
+	else if (!ft_strncmp(line, "pb\n", 3))
+		pb(&var->stack_a, &var->stack_b);
+	else if (!ft_strncmp(line, "rr\n", 3))
+		rr(&var->stack_a, &var->stack_b);
+	else if (!ft_strncmp(line, "sa\n", 3))
+		sa(&var->stack_a);
+	else if (!ft_strncmp(line, "sb\n", 3))
+		sb(&var->stack_b);
+	else if (!ft_strncmp(line, "ss\n", 3))
+		ss(&var->stack_a, &var->stack_b);
+	else if (!ft_strncmp(line, "rrr\n", 4))
+		rrr(&var->stack_a, &var->stack_b);
+	else if (!ft_strncmp(line, "rra\n", 4))
+		rra(&var->stack_a);
+	else if (!ft_strncmp(line, "rrb\n", 4))
+		rrb(&var->stack_b);
+	else
+		errornl();
+	return (1);
+}
+
+int	issorted(t_stack *stack)
+{
+	t_stack	*tmp;
+
+	tmp = stack;
+	while (tmp && tmp->next)
+	{
+		if (tmp->val > tmp->next->val)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+int	get_size(t_stack *stack)
+{
+	t_stack	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = stack;
+	if (!tmp)
+		return (0);
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	return (i);
+}
+
 int	main(int ac, char **av)
 {
-	s_var *var;
+	t_var *var;
+	char *line;
 	if (ac >= 2)
 	{
-		var = (s_var *)malloc(sizeof(s_var));
+		var = (t_var *)malloc(sizeof(t_var));
 		joinargs(ac, av, var);
-        initstack(var);
+		initstack(var);
+
+		while ((line = get_next_line(STDIN_FILENO)) != NULL)
+		{
+			checking(line, var);
+			free(line);
+		}
+		if(issorted(var->stack_a))
+			write(1 , "OK", 2);
+			else
+			write(1 , "KO", 2);
+			free(var);
 	}
-        system("leaks a.out");
+
 }

@@ -59,6 +59,7 @@
   "files.associations": {
     "push_swap.h": "c",
     "libft.h": "c",
-    "pushswap.h": "c"
+    "pushswap.h": "c",
+    "checker_bonus.h": "c"
   }
 }

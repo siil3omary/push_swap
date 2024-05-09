@@ -8,63 +8,80 @@
 ################################################################################
 
 NAME        := push_swap
+BNAME        := checker
 CC        := cc
-FLAGS    :=   # -g -fsanitize=address  #-Wall -Wextra -Werror
+FLAGS    := -Wall -Wextra -Werror 
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-SRCS        :=      srcs/list_utils.c \
-                          srcs/operations/pa.c \
-                          srcs/operations/rr.c \
-                          srcs/operations/rrb.c \
-                          srcs/operations/pb.c \
-                          srcs/operations/rra.c \
-                          srcs/operations/rb.c \
-                          srcs/operations/rrr.c \
-                          srcs/operations/sb.c \
-                          srcs/operations/ra.c \
-                          srcs/operations/ss.c \
-                          srcs/operations/sa.c \
-                          srcs/lib/ft_strnstr.c \
-                          srcs/lib/ft_isdigit.c \
-                          srcs/lib/ft_putstr_fd.c \
-                          srcs/lib/ft_strlcpy.c \
-                          srcs/lib/ft_strlen.c \
-                          srcs/lib/ft_memcmp.c \
-                          srcs/lib/ft_putnbr_fd.c \
-                          srcs/lib/ft_strchr.c \
-                          srcs/lib/ft_striteri.c \
-                          srcs/lib/ft_bzero.c \
-                          srcs/lib/ft_strjoin.c \
-                          srcs/lib/ft_isascii.c \
-                          srcs/lib/ft_memcpy.c \
-                          srcs/lib/ft_isprint.c \
-                          srcs/lib/ft_putendl_fd.c \
-                          srcs/lib/ft_toupper.c \
-                          srcs/lib/ft_split.c \
-                          srcs/lib/ft_strrchr.c \
-                          srcs/lib/ft_isalpha.c \
-                          srcs/lib/ft_memchr.c \
-                          srcs/lib/ft_putchar_fd.c \
-                          srcs/lib/ft_memset.c \
-                          srcs/lib/ft_substr.c \
-                          srcs/lib/ft_strncmp.c \
-                          srcs/lib/ft_strmapi.c \
-                          srcs/lib/ft_strtrim.c \
-                          srcs/lib/ft_memmove.c \
-                          srcs/lib/ft_strlcat.c \
-                          srcs/lib/ft_calloc.c \
-                          srcs/lib/ft_strdup.c \
+SRCS        :=      srcs/indexit.c \
                           srcs/lib/ft_atoi.c \
-                          srcs/lib/ft_isalnum.c \
-                          srcs/lib/ft_itoa.c \
-                          srcs/lib/ft_tolower.c \
+                          srcs/lib/ft_isdigit.c \
+                          srcs/lib/ft_putchar_fd.c \
+                          srcs/lib/ft_putendl_fd.c \
+                          srcs/lib/ft_putnbr_fd.c \
+                          srcs/lib/ft_putstr_fd.c \
+                          srcs/lib/ft_split.c \
+							srcs/lib/ft_strjoin.c \
+							srcs/lib/ft_strlcpy.c \
+                          srcs/lib/ft_strdup.c \
+                          srcs/lib/ft_strlen.c \
+                          srcs/lib/ft_strncmp.c \
+                          srcs/list_utils.c \
+                          srcs/operations/pa.c \
+                          srcs/operations/pb.c \
+                          srcs/operations/ra.c \
+                          srcs/operations/rb.c \
+                          srcs/operations/rr.c \
+                          srcs/operations/rra.c \
+                          srcs/operations/rrb.c \
+                          srcs/operations/rrr.c \
+                          srcs/operations/sa.c \
+                          srcs/operations/sb.c \
+                          srcs/operations/ss.c \
+                          srcs/parcing.c \
                           srcs/pushswap.c \
-                          srcs/send_to_b.c \
                           srcs/send_to_a.c \
+                          srcs/send_to_b.c \
+                          srcs/sort.c \
+                          srcs/sort3.c \
+                          srcs/sort4.c \
+                          srcs/sort5.c \
+                          srcs/utils.c \
+
+BSRCS       :=          srcs_bonus/operations/pa.c \
+                          srcs_bonus/operations/pb.c \
+                          srcs_bonus/operations/ra.c \
+                          srcs_bonus/operations/rb.c \
+                          srcs_bonus/operations/rr.c \
+                          srcs_bonus/operations/rra.c \
+                          srcs_bonus/operations/rrb.c \
+                          srcs_bonus/operations/rrr.c \
+                          srcs_bonus/operations/sa.c \
+                          srcs_bonus/operations/sb.c \
+                          srcs_bonus/operations/ss.c \
+                          srcs_bonus/lib/ft_atoi.c \
+                          srcs_bonus/lib/ft_isdigit.c \
+                          srcs_bonus/lib/ft_putchar_fd.c \
+                          srcs_bonus/lib/ft_putendl_fd.c \
+                          srcs_bonus/lib/ft_putnbr_fd.c \
+                          srcs_bonus/lib/ft_putstr_fd.c \
+                          srcs_bonus/lib/ft_split.c \
+                          srcs_bonus/lib/ft_strjoin.c \
+                          srcs_bonus/lib/ft_strlcpy.c \
+                          srcs_bonus/lib/ft_strlen.c \
+                          srcs_bonus/lib/ft_strncmp.c \
+                          srcs_bonus/lib/ft_strdup.c \
+                          srcs_bonus/lib/ft_substr.c \
+						  srcs_bonus/gnl/get_next_line.c \
+                          srcs_bonus/stack_utils.c \
+                          srcs_bonus/checker_bonus.c \
+
+
                           
 OBJS        := $(SRCS:.c=.o)
+BOBJS       := $(BSRCS:.c=.o)
 
 .c.o:
 	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
@@ -87,9 +104,13 @@ ${NAME}:	${OBJS}
 			${CC} ${FLAGS} -o ${NAME} ${OBJS}
 			@echo "$(GREEN)$(NAME) created[0m ✔️"
 
+${BNAME}:   ${BOBJS}
+			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(BNAME) ${CLR_RMV}..."
+			${CC} ${FLAGS} -o ${BNAME} ${BOBJS}
+			@echo "$(GREEN)$(BNAME) created[0m ✔️"
 all:		${NAME}
 
-bonus:		all
+bonus:      ${BNAME}
 
 clean:
 			@ ${RM} *.o */*.o */*/*.o

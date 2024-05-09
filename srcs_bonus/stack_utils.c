@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 23:28:08 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/02 23:38:40 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/09 16:54:33 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,29 @@ t_stack	*ft_stacknew(int val)
 
 void	ft_stackaddback(t_stack **head, t_stack *node)
 {
+		t_stack *tmp;
+
 	if (!head || !node)
 		return ;
 	if (!*head)
 	{
-        head = node;
+		node->next = NULL;
+		*head = node;
+		return ;
 	}
-	t_stack *tmp;
-	while (tmp)
+	else
 	{
-		tmp = tmp->next;
+		tmp = *head;
+		while (tmp->next)
+			tmp = tmp->next;
+		node->next = NULL;
+		tmp->next = node;
 	}
-	tmp->next = node;
+}
+void ft_stackaddfront(t_stack **head, t_stack *node)
+{
+	if(!head || !node)
+		return ;
+	node->next = *head;
+	*head = node;
 }
