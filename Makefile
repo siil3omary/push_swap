@@ -10,7 +10,7 @@
 NAME        := push_swap
 BNAME        := checker
 CC        := cc
-FLAGS    := -Wall -Wextra -Werror 
+FLAGS    :=# -Wall -Wextra -Werror 
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
@@ -117,7 +117,7 @@ clean:
 			@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)objs ✔️"
 
 fclean:		clean
-			@ ${RM} ${NAME}
+			@ ${RM} ${NAME} ${BNAME}
 			@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)binary ✔️"
 
 re:			fclean all

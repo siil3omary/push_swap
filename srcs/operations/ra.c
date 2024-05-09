@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:21:33 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/02 13:58:52 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/09 18:29:37 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,14 @@
 void	ra(t_stack **a)
 {
 	t_stack	*first;
-	t_stack	*second;
+	t_stack	*secend;
 
-	if (!a || !(*a) || !((*a)->next))
-		return ;
 	first = *a;
-	second = first->next;
-	while (second->next)
-		second = second->next;
-	second->next = first;
-	*a = second->next->next;
+	secend = first->next;
+	while (secend->next)
+		secend = secend->next;
+	secend->next = first;
+	*a = first->next;
 	first->next = NULL;
 	write(1, "ra\n", 3);
 }

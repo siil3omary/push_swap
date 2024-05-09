@@ -27,8 +27,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/aelomari/Desktop/pushswap/srcs",
-      "program": "/Users/aelomari/Desktop/pushswap/srcs/build/Debug/outDebug"
+      "cwd": "/Users/aelomari/Documents/push_swap/srcs",
+      "program": "/Users/aelomari/Documents/push_swap/srcs/build/Debug/outDebug"
     }
   ]
 }

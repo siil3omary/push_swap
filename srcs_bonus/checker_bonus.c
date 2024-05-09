@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 21:59:57 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/09 14:43:24 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/09 18:00:35 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	initstack(t_var *var)
 		{
 			if (!ft_isdigit(var->args[var->size][j]))
 				errornl();
-				j++;
+			j++;
 		}
 		ft_stackaddback(&var->stack_a,
 			ft_stacknew(ft_atoi(var->args[var->size])));
@@ -121,24 +121,23 @@ int	get_size(t_stack *stack)
 
 int	main(int ac, char **av)
 {
-	t_var *var;
-	char *line;
+	t_var	*var;
+	char	*line;
+
 	if (ac >= 2)
 	{
 		var = (t_var *)malloc(sizeof(t_var));
 		joinargs(ac, av, var);
 		initstack(var);
-
 		while ((line = get_next_line(STDIN_FILENO)) != NULL)
 		{
 			checking(line, var);
 			free(line);
 		}
-		if(issorted(var->stack_a))
-			write(1 , "OK", 2);
-			else
-			write(1 , "KO", 2);
-			free(var);
+		if (issorted(var->stack_a))
+			write(1, "OK", 2);
+		else
+			write(1, "KO", 2);
+		free(var);
 	}
-
 }
