@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 00:42:58 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/02 14:01:04 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/11 16:57:30 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,10 @@ long	ft_atoi(const char *nptr)
 	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
 		i++;
 	if (nptr[i] == '-' || nptr[i] == '+')
-	{
-		if (nptr[i] == '-')
-		{
+		if (nptr[i++] == '-')
 			sign = -sign;
-		}
-		i++;
-	}
+	if (nptr[i] < '0' || nptr[i] > '9')
+		errornl();
 	while (nptr[i] && nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		nbr = nbr * 10 + (nptr[i] - '0');
