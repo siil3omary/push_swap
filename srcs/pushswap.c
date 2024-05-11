@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:50:30 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/11 13:25:32 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/11 13:48:45 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	main(int ac, char **av)
 			exit(0);
 		indexstack(var);
 		sortit(var);
+		
+	free(var);
 	}
 	return (0);
 }

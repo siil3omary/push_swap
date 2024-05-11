@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:55:25 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/02 13:56:38 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/11 13:44:36 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	indexit(t_var *var)
 		}
 		tmp = tmp->next;
 	}
+	free(var->arr);
 }
 
 void	swap(int *a, int *b)

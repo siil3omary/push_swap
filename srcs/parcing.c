@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:49:17 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/02 13:56:35 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/11 14:01:54 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	joinargs(char **av, int ac, t_var *var)
 	var->args = ft_split(var->avs, ' ');
 	if (!*var->args)
 		errornl();
+	free(var->avs);
 }
 
 void	initstack(t_var *var)
@@ -57,6 +58,7 @@ void	initstack(t_var *var)
 				0));
 		var->size++;
 	}
+	free_all(var->args);
 }
 
 void	isdup(t_stack *stack)
