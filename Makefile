@@ -10,7 +10,7 @@
 NAME        := push_swap
 BNAME        := checker
 CC        := cc
-FLAGS    :=# -Wall -Wextra -Werror 
+FLAGS    := -Wall -Wextra -Werror -fsanitize=address
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
 ################################################################################

@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:31:53 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/08 22:12:29 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/11 13:17:27 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,4 @@ void	rrb(t_stack **b)
 	temp->next = NULL;
 	temp2->next = *b;
 	*b = temp2;
-
 }

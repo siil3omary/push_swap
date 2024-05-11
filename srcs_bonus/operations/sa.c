@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 20:29:21 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/08 22:12:43 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/11 13:17:14 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,4 @@ void	sa(t_stack **a)
 	*a = secend;
 	first->next = secend->next;
 	secend->next = first;
-
 }
