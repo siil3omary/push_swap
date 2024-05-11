@@ -6,12 +6,12 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 22:00:24 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/09 18:00:51 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/11 16:42:12 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#if !defined(CHECKER_BONUS)
-# define CHECKER_BONUS
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
 
 # include "gnl/get_next_line.h"
 # include "lib/libft.h"
@@ -38,6 +38,8 @@ void				errornl(void);
 void				ft_stackaddback(t_stack **head, t_stack *node);
 t_stack				*ft_stacknew(int val);
 void				ft_stackaddfront(t_stack **head, t_stack *node);
+int					get_size(t_stack *stack);
+int					issorted(t_stack *stack);
 void				ss(t_stack **a, t_stack **b);
 void				pa(t_stack **a, t_stack **b);
 void				pb(t_stack **a, t_stack **b);
@@ -51,4 +53,4 @@ void				sa(t_stack **a);
 void				sb(t_stack **b);
 void				ss(t_stack **a, t_stack **b);
 
-#endif // CHECKER_BONUS
+#endif

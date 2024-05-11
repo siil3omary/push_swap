@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 15:51:30 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/11 14:02:23 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/11 14:25:43 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static size_t	word_count(const char *str, char c)
 	return (count);
 }
 
- void	*free_all(char **sp)
+void	*free_all(char **sp)
 {
 	size_t	j;
 

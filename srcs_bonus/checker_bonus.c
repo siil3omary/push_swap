@@ -6,17 +6,12 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 21:59:57 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/09 18:00:35 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/11 16:41:31 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 
-void	errornl(void)
-{
-	ft_putstr_fd("Error\n", 2);
-	exit(1);
-}
 void	joinargs(int ac, char **av, t_var *var)
 {
 	int		i;
@@ -39,6 +34,7 @@ void	joinargs(int ac, char **av, t_var *var)
 	}
 	var->args = ft_split(var->avs, ' ');
 }
+
 void	initstack(t_var *var)
 {
 	int	j;
@@ -60,6 +56,7 @@ void	initstack(t_var *var)
 		var->size++;
 	}
 }
+
 int	checking(char *line, t_var *var)
 {
 	if (!ft_strncmp(line, "ra\n", 3))
@@ -89,36 +86,6 @@ int	checking(char *line, t_var *var)
 	return (1);
 }
 
-int	issorted(t_stack *stack)
-{
-	t_stack	*tmp;
-
-	tmp = stack;
-	while (tmp && tmp->next)
-	{
-		if (tmp->val > tmp->next->val)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
-}
-int	get_size(t_stack *stack)
-{
-	t_stack	*tmp;
-	int		i;
-
-	i = 0;
-	tmp = stack;
-	if (!tmp)
-		return (0);
-	while (tmp)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
-}
-
 int	main(int ac, char **av)
 {
 	t_var	*var;
@@ -129,10 +96,12 @@ int	main(int ac, char **av)
 		var = (t_var *)malloc(sizeof(t_var));
 		joinargs(ac, av, var);
 		initstack(var);
-		while ((line = get_next_line(STDIN_FILENO)) != NULL)
+		line = get_next_line(STDIN_FILENO);
+		while ((line))
 		{
 			checking(line, var);
 			free(line);
+			line = get_next_line(STDIN_FILENO);
 		}
 		if (issorted(var->stack_a))
 			write(1, "OK", 2);

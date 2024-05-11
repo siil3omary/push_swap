@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 10:53:47 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/09 20:20:55 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/11 14:25:07 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ static void	secend_half(t_var *var, int *flag)
 	}
 	pa(&var->head_a, &var->head_b);
 }
+
 void	send_to_a(t_var *var)
 {
 	int	flag;
