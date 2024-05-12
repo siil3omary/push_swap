@@ -6,11 +6,30 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 21:59:57 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/11 16:41:31 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/12 13:14:03 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
+
+void	isdup(t_stack *stack)
+{
+	t_stack	*tmp;
+	t_stack	*tmp2;
+
+	tmp = stack;
+	while (tmp)
+	{
+		tmp2 = tmp->next;
+		while (tmp2)
+		{
+			if (tmp->val == tmp2->val)
+				errornl();
+			tmp2 = tmp2->next;
+		}
+		tmp = tmp->next;
+	}
+}
 
 void	joinargs(int ac, char **av, t_var *var)
 {
@@ -27,12 +46,13 @@ void	joinargs(int ac, char **av, t_var *var)
 		tmp = ft_strjoin(av[i], " ");
 		args = var->avs;
 		var->avs = ft_strjoin(var->avs, tmp);
-		if (args)
-			free(args);
+		free(args);
 		free(tmp);
 		i++;
 	}
 	var->args = ft_split(var->avs, ' ');
+	if (var->avs)
+		free(var->avs);
 }
 
 void	initstack(t_var *var)
@@ -55,6 +75,7 @@ void	initstack(t_var *var)
 			ft_stacknew(ft_atoi(var->args[var->size])));
 		var->size++;
 	}
+	free_all(var->args);
 }
 
 int	checking(char *line, t_var *var)
@@ -96,6 +117,7 @@ int	main(int ac, char **av)
 		var = (t_var *)malloc(sizeof(t_var));
 		joinargs(ac, av, var);
 		initstack(var);
+		isdup(var->stack_a);
 		line = get_next_line(STDIN_FILENO);
 		while ((line))
 		{
@@ -104,9 +126,8 @@ int	main(int ac, char **av)
 			line = get_next_line(STDIN_FILENO);
 		}
 		if (issorted(var->stack_a))
-			write(1, "OK", 2);
+			write(1, "OK\n", 3);
 		else
-			write(1, "KO", 2);
-		free(var);
+			write(1, "KO\n", 3);
 	}
 }

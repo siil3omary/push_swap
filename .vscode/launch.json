@@ -27,8 +27,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/aelomari/Documents/push_swap/srcs",
-      "program": "/Users/aelomari/Documents/push_swap/srcs/build/Debug/outDebug"
+      "cwd": "/Users/aelomari/Documents/push_swap/srcs_bonus",
+      "program": "/Users/aelomari/Documents/push_swap/srcs_bonus/build/Debug/outDebug"
     }
   ]
 }

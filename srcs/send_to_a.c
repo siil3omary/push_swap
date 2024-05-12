@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 10:53:47 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/11 14:25:07 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/12 12:59:35 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,9 @@ void	send_to_a(t_var *var)
 	while (get_size(var->head_b))
 	{
 		if (is_in_first_half(var->head_b, var->head_a->index - 1))
-		{
 			first_half(var, &flag);
-		}
 		else
-		{
 			secend_half(var, &flag);
-		}
 		while (last_ind(var->head_a) == var->head_a->index - 1)
 			rra(&var->head_a);
 		if (search_max(var) == last_ind(var->head_a))

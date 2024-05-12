@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 20:36:26 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/02 22:07:29 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/11 23:27:42 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <unistd.h>
 
 char	*ft_strdup(const char *s);
+void	*free_all(char **sp);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t n);
