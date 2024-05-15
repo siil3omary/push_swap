@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 21:59:57 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/15 15:56:18 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/15 16:14:13 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	initstack(t_var *var)
 			if (!ft_isdigit(var->args[var->size][j]))
 			{
 				free_all(var->args);
-				free_stack(&var->stack_a);	
+				free_stack(&var->stack_a);
 				errornl(var);
 			}
 			j++;
@@ -106,7 +106,7 @@ int	checking(char *line, t_var *var)
 	else if (!ft_strncmp(line, "rrb\n", 4))
 		rrb(&var->stack_b);
 	else
-		return(free(line), errornl(var), 0)	;
+		return (free(line), errornl(var), 0);
 	return (1);
 }
 
@@ -124,8 +124,8 @@ int	main(int ac, char **av)
 		while (1)
 		{
 			line = get_next_line(STDIN_FILENO);
-			if(!line)
-				break;
+			if (!line)
+				break ;
 			checking(line, var);
 			free(line);
 		}

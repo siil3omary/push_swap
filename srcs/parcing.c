@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:49:17 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/11 14:01:54 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/15 16:14:45 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	initstack(t_var *var)
 	free_all(var->args);
 }
 
-void	isdup(t_stack *stack , t_var *var)
+void	isdup(t_stack *stack, t_var *var)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;

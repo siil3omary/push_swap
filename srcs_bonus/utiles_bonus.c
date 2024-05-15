@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 16:39:51 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/15 15:40:34 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/15 16:14:17 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,5 @@ void	free_stack(t_stack **stack)
 		free(*stack);
 		*stack = tmp;
 	}
-	*stack = NULL;		
+	*stack = NULL;
 }

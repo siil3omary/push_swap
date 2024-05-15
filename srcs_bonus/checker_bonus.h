@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 22:00:24 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/15 15:07:00 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/15 16:14:33 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_stack				*ft_stacknew(int val);
 void				ft_stackaddfront(t_stack **head, t_stack *node);
 int					get_size(t_stack *stack);
 int					issorted(t_stack *stack);
-void	free_stack(t_stack **stack);
+void				free_stack(t_stack **stack);
 void				ss(t_stack **a, t_stack **b);
 void				pa(t_stack **a, t_stack **b);
 void				pb(t_stack **a, t_stack **b);

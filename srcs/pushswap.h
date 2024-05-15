@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 21:51:46 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/02 13:56:15 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/15 16:14:58 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void				sortfour(t_var *var);
 void				sortfive(t_var *var);
 void				joinargs(char **av, int ac, t_var *var);
 void				initstack(t_var *var);
-void	isdup(t_stack *stack , t_var *var);
-void	free_stack(t_stack **stack);
+void				isdup(t_stack *stack, t_var *var);
+void				free_stack(t_stack **stack);
 void				errornl(t_var *var);
 int					issorted(t_stack *stack);
 int					get_size(t_stack *stack);
