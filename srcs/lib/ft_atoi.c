@@ -27,12 +27,12 @@ long	ft_atoi(const char *nptr)
 		if (nptr[i++] == '-')
 			sign = -sign;
 	if (nptr[i] < '0' || nptr[i] > '9')
-		errornl();
+		errornl(NULL);
 	while (nptr[i] && nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		nbr = nbr * 10 + (nptr[i] - '0');
 		if ((nbr > 2147483648 && sign == -1) || (nbr > 2147483647 && sign == 1))
-			errornl();
+			errornl(NULL);
 		i++;
 	}
 	return (nbr * sign);

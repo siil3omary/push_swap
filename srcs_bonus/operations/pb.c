@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 19:03:22 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/11 13:17:51 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:02:12 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,5 @@ void	pb(t_stack **a, t_stack **b)
 	removeda = *a;
 	*a = (*a)->next;
 	ft_stackaddfront(b, ft_stacknew(removeda->val));
+	free(removeda);
 }

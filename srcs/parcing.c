@@ -34,7 +34,7 @@ void	joinargs(char **av, int ac, t_var *var)
 	}
 	var->args = ft_split(var->avs, ' ');
 	if (!*var->args)
-		errornl();
+		errornl(var);
 	free(var->avs);
 }
 
@@ -51,7 +51,11 @@ void	initstack(t_var *var)
 		while (var->args[var->size][y])
 		{
 			if (!ft_isdigit(var->args[var->size][y]))
-				errornl();
+			{
+				free_all(var->args);
+				free_stack(&var->head_a);
+				errornl(var);
+			}
 			y++;
 		}
 		fs_stacadd_back(&var->head_a, fs_stacnew(ft_atoi(var->args[var->size]),
@@ -61,7 +65,7 @@ void	initstack(t_var *var)
 	free_all(var->args);
 }
 
-void	isdup(t_stack *stack)
+void	isdup(t_stack *stack , t_var *var)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;
@@ -73,7 +77,10 @@ void	isdup(t_stack *stack)
 		while (tmp2)
 		{
 			if (tmp->val == tmp2->val)
-				errornl();
+			{
+				free_stack(&stack);
+				errornl(var);
+			}
 			tmp2 = tmp2->next;
 		}
 		tmp = tmp->next;

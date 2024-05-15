@@ -6,15 +6,16 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:58:36 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/12 12:49:11 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:14:26 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	errornl(void)
+void	errornl(t_var *var)
 {
 	ft_putstr_fd("Error\n", 2);
+	free(var);
 	exit(1);
 }
 

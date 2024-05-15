@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 22:00:24 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/11 16:42:12 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:07:00 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,13 @@ typedef struct s_var
 	t_stack			*stack_b;
 }					t_var;
 
-void				errornl(void);
+void				errornl(t_var *var);
 void				ft_stackaddback(t_stack **head, t_stack *node);
 t_stack				*ft_stacknew(int val);
 void				ft_stackaddfront(t_stack **head, t_stack *node);
 int					get_size(t_stack *stack);
 int					issorted(t_stack *stack);
+void	free_stack(t_stack **stack);
 void				ss(t_stack **a, t_stack **b);
 void				pa(t_stack **a, t_stack **b);
 void				pb(t_stack **a, t_stack **b);

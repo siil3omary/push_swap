@@ -6,14 +6,17 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 16:39:51 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/12 12:57:59 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:40:34 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 
-void	errornl(void)
+void	errornl(t_var *var)
 {
+	free_stack(&var->stack_b);
+	free_stack(&var->stack_a);
+	free(var);
 	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }
@@ -47,4 +50,17 @@ int	get_size(t_stack *stack)
 		tmp = tmp->next;
 	}
 	return (i);
+}
+
+void	free_stack(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	*stack = NULL;		
 }
