@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 00:42:58 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/11 16:57:30 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/05/22 18:12:55 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ long	ft_atoi(const char *nptr)
 			errornl(NULL);
 		i++;
 	}
+	if(nptr[i])
+		errornl(NULL);
 	return (nbr * sign);
 }
