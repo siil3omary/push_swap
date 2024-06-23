@@ -6,11 +6,27 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:49:17 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/15 16:14:45 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/06/23 18:14:46 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+int	checkspaces(char *str)
+{
+	int	i;
+	int	flag;
+
+	flag = 1;
+	i = 0;
+	while (i[str])
+	{
+		if (i[str] != ' ')
+			flag = 0;
+		i++;
+	}
+	return (flag);
+}
 
 void	joinargs(char **av, int ac, t_var *var)
 {
@@ -24,6 +40,11 @@ void	joinargs(char **av, int ac, t_var *var)
 	i = 1;
 	while (i <= ac - 1)
 	{
+		if (checkspaces(av[i]))
+		{
+			free(var->avs);
+			errornl(var);
+		}
 		tmp = ft_strjoin(av[i], " ");
 		old_avs = var->avs;
 		var->avs = ft_strjoin(var->avs, tmp);
@@ -33,8 +54,6 @@ void	joinargs(char **av, int ac, t_var *var)
 		i++;
 	}
 	var->args = ft_split(var->avs, ' ');
-	if (!*var->args)
-		errornl(var);
 	free(var->avs);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 22:00:24 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/15 16:14:33 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/06/23 18:25:41 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_var
 }					t_var;
 
 void				errornl(t_var *var);
+int					checkspaces(char *str);
 void				ft_stackaddback(t_stack **head, t_stack *node);
 t_stack				*ft_stacknew(int val);
 void				ft_stackaddfront(t_stack **head, t_stack *node);

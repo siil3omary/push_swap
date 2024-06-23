@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 21:59:57 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/15 16:14:13 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/06/23 18:30:36 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ void	joinargs(int ac, char **av, t_var *var)
 	i = 1;
 	while (i <= ac - 1)
 	{
+		if (checkspaces(av[i]))
+		{
+			free(var->avs);
+			errornl(var);
+		}
 		tmp = ft_strjoin(av[i], " ");
 		args = var->avs;
 		var->avs = ft_strjoin(var->avs, tmp);

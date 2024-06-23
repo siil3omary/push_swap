@@ -6,7 +6,7 @@
 /*   By: aelomari <aelomari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 15:51:30 by aelomari          #+#    #+#             */
-/*   Updated: 2024/05/11 14:25:43 by aelomari         ###   ########.fr       */
+/*   Updated: 2024/06/23 17:59:55 by aelomari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	*free_all(char **sp)
 		j++;
 	}
 	free(sp);
-	return (NULL);
+	return (0);
 }
 
 static void	fill_split(char **split, const char *s, char c)
@@ -89,7 +89,6 @@ char	**ft_split(char const *s, char c)
 // 	{
 // 		int i = 0;
 // 		char **str = ft_split(argv[1] , argv[2][0]);
-
 // 		while (str[i])
 // 		{
 // 			printf("hey");
